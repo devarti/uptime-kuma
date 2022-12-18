@@ -9,7 +9,7 @@ COPY ./extra/ ./extra/
 
 # Compile healthcheck.go
 RUN apt update
-RUN apt --yes --no-install-recommends install curl
+RUN apt --yes --no-install-recommends install curl vim
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash
 RUN apt --yes --no-install-recommends install nodejs
 RUN node -v
@@ -102,9 +102,9 @@ RUN chmod +x /app/extra/upload-github-release-asset.sh
 
 # Full Build
 # RUN tar -zcvf $FILE app
-# RUN /app/extra/upload-github-release-asset.sh github_api_token=$GITHUB_TOKEN owner=louislam repo=uptime-kuma tag=$VERSION filename=$FILE
+# RUN /app/extra/upload-github-release-asset.sh github_api_token=$GITHUB_TOKEN owner=devarti repo=uptime-kuma tag=$VERSION filename=$FILE
 
 # Dist only
 RUN cd /app && tar -zcvf $DIST dist
-RUN /app/extra/upload-github-release-asset.sh github_api_token=$GITHUB_TOKEN owner=louislam repo=uptime-kuma tag=$VERSION filename=/app/$DIST
+RUN /app/extra/upload-github-release-asset.sh github_api_token=$GITHUB_TOKEN owner=devarti repo=uptime-kuma tag=$VERSION filename=/app/$DIST
 
